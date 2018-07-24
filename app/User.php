@@ -4,18 +4,40 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasRoles, Notifiable;
+    use SoftDeletes;
 
+    const NAM = 0;
+    const NU = 1;
+    const MANAGER = 1;
+    const EMPLOYEE = 2;
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name',
+        'email',
+        'password',
+        'address',
+        'birthday',
+        'avatar',
+        'sex',
+        'day_in',
+        'salary_day',
+        'phone'
+    ];
+
+    protected $dates = [
+        'deleted_at',
+        'birthday',
+        'day_in'
     ];
 
     /**
@@ -26,4 +48,21 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function works() {
+        return $this->hasMany(Working::class);
+    }
+
+    public function vacations() {
+        return $this->hasMany(Vacation::class);
+    }
+
+    public function overTimes() {
+        return $this->hasMany(Overtime::class);
+    }
+
+    public function salaries() {
+        return $this->hasMany(Salary::class);
+    }
 }
+
