@@ -166,11 +166,11 @@
                         </a>
                     </li>
                     <li>
-                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <i class="ti-power-off p-r-10"></i>
                             <span>{{ __('logout') }}</span>
                         </a>
-                        {!! Form::open(['method' => 'POST', 'routes' => 'logout', 'id' => 'logout-form']) !!}
+                        {!! Form::open(['method' => 'POST', 'url' => 'logout', 'id' => 'logout-form']) !!} 
                         {!! Form::close() !!}
                     </li>
                 </ul>

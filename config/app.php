@@ -213,5 +213,6 @@ return [
         'Html' => Collective\Html\HtmlFacade::class,
 
     ],
-
+    'manager' => 'manager',
+    'employee' => 'employee',
 ];
