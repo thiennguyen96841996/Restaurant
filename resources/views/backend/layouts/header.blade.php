@@ -31,7 +31,9 @@
             </li>
         </ul>
         <ul class="nav-right">
+            @guest
             <li><a href="#">{{ __('login') }}</a></li>
+            @else
             <li class="dropdown dropdown-animated scale-left">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="mdi mdi-apps"></i>
@@ -168,11 +170,12 @@
                             <i class="ti-power-off p-r-10"></i>
                             <span>{{ __('logout') }}</span>
                         </a>
-                        {!! Form::open(['method' => 'POST', 'url' => '#', 'id' => 'logout-form']) !!}
+                        {!! Form::open(['method' => 'POST', 'routes' => 'logout', 'id' => 'logout-form']) !!}
                         {!! Form::close() !!}
                     </li>
                 </ul>
             </li>
+            @endguest
             <li class="m-r-10">
                 <a class="quick-view-toggler" href="javascript:void(0);">
                     <i class="mdi mdi-format-indent-decrease"></i>

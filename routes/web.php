@@ -11,6 +11,19 @@
 |
 */
 
-Route::get('/', function () {
-    return view('backend.home');
+Auth::routes();
+
+Route::group(array('prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'manager')
+, function () {
+    Route::get('/', 'PagesController@index')->name('manager.home');
+    Route::get('users', "UsersController@index");
+    Route::get('users/{id?}/edit', 'UsersController@edit');
+    Route::post('users/{id?}/edit', 'UsersController@update');
 });
+
+Route::group(array('prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee')
+, function () {
+    Route::get('/', 'PagesController@index')->name('employee.home');
+});
+
+Route::get('/', 'HomeController@index')->name('home');
