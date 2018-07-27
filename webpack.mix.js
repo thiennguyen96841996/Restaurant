@@ -11,5 +11,10 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.copyDirectory('resources/assets/bootstrap', 'public/assets/bootstrap');
+mix.copyDirectory('resources/assets/ember-challenge', 'public/assets/ember-challenge');
+mix.copyDirectory('resources/assets/perfect-scrollbar', 'public/assets/perfect-scrollbar');
+mix.copyDirectory('resources/assets/SimpleFolio', 'public/assets/SimpleFolio');
+mix.copyDirectory('resources/assets/mdi', 'public/assets/mdi');
+mix.copyDirectory('resources/assets/css', 'public/assets/css');
+mix.copyDirectory('resources/assets/demo-bower', 'public/assets/demo-bower');
