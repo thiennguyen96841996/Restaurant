@@ -15,6 +15,7 @@
     <link href="{{ asset('assets/mdi/css/materialdesignicons.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/demo-bower/assets/css/animate.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/demo-bower/assets/css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/mystyle.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -22,7 +23,14 @@
     <div class="app header-default side-nav-dark">
         <div class="layout">
             @include('backend.layouts.header')
-            @include('backend.layouts.navbar')
+            @guest
+            @else
+                @if (Auth::user()->role == 1)
+                    @include('backend.layouts.navbar')
+                @else
+                    @include('employees.layouts.navbar')
+                @endif
+            @endguest
             @include('backend.layouts.config')
             @yield('content')
          </div>

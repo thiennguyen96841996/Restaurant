@@ -39,5 +39,7 @@
     "search": "You are Searching for", 
     "search_form": "Type to search...", 
     "check_notification": "Check all notifications", 
-    "vacation_notification": "New User Vacation"
+    "vacation_notification": "New User Vacation",
+    "Forgot password": "Forgot PassWord",
+    "Remember Me": "Remember Me"
 }
