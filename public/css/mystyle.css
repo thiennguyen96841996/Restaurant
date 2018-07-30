@@ -1,3 +1,34 @@
 .help-block { 
     color:red; 
 }
+.scrollable { 
+    max-height: 300px; 
+}
+
+#logout-form { 
+    display: none; 
+}
+
+.logo-dark { 
+    background-image: url('../assets/images/logo/logohead.png') 
+}
+
+.logo-white { 
+    background-image: url('../assets/images/logo/logohead.png') 
+}
+
+.table-overflow .text-gray { 
+    border: none; 
+    font-size: 14px; 
+    border-radius: 50%; 
+    background: none; 
+}
+
+.table-overflow .text-gray:hover { 
+    background-color: white; 
+    color: red !important; 
+}
+
+.header .header-container .nav-left .user-profile .profile-img, .header .header-container .nav-right .user-profile .profile-img { 
+    height: 35px; 
+}

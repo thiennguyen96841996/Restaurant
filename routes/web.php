@@ -13,7 +13,7 @@
 
 Auth::routes();
 
-Route::group(array('prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'manager')
+Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'manager']
 , function () {
     Route::get('/', 'PagesController@index')->name('manager.home');
     Route::get('users', "UsersController@index");
@@ -21,9 +21,10 @@ Route::group(array('prefix' => 'manager', 'namespace' => 'Manager', 'middleware'
     Route::post('users/{id?}/edit', 'UsersController@update');
 });
 
-Route::group(array('prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee')
+Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee']
 , function () {
     Route::get('/', 'PagesController@index')->name('employee.home');
+    Route::resource('vacation', 'VacationController', ['except' => 'show']);
 });
 
 Route::get('/', 'HomeController@index')->name('home');

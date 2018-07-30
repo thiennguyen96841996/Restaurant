@@ -215,4 +215,8 @@ return [
     ],
     'manager' => 'manager',
     'employee' => 'employee',
+    'waitting' => 0,
+    'aprove' => 1,
+    'refuse' => 2, 
+    'link_avatar' => 'assets/images/avatars/'
 ];

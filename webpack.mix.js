@@ -17,3 +17,6 @@ mix.copyDirectory('resources/assets/perfect-scrollbar', 'public/assets/perfect-s
 mix.copyDirectory('resources/assets/SimpleFolio', 'public/assets/SimpleFolio');
 mix.copyDirectory('resources/assets/mdi', 'public/assets/mdi');
 mix.copyDirectory('resources/assets/demo-bower', 'public/assets/demo-bower');
+mix.copyDirectory('resources/assets/ckeditor', 'public/assets/ckeditor');
+mix.copyDirectory('resources/assets/remarkable-bootstrap-notify', 'public/assets/remarkable-bootstrap-notify');
+mix.copyDirectory('resources/assets/datetimepicker', 'public/assets/datetimepicker');
