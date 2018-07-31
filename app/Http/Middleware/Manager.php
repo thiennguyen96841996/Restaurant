@@ -18,9 +18,8 @@ class Manager
     { 
         if(!Auth::check()) {
             return redirect('/login');
-        } else {
-            $user = Auth::user();
-            if(Auth::user()->role == 1)
+            } else {
+            if(Auth::user()->role == config('app.manager'))
             {
                 return $next($request);
             } else {

@@ -18,15 +18,13 @@ class Employee
     {
         if(!Auth::check()) {
             return redirect('/login');
-        } else {
-            $user = Auth::user();
-            if(Auth::user()->role == 2)
-            {   
+            } else {
+            if(Auth::user()->role == config('app.employee'))
+            {
                 return $next($request);
-
             } else {
                 return redirect('/manager');
-            }   
-        } 
-    }  
+            }
+        }
+    }
 }

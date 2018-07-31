@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    @yield('title')
+    <title> @yield('title') </title>
     <link rel="apple-touch-icon" href="{{ asset('assets/demo-bower/assets/images/logo/apple-touch-icon.html') }}">
     <link rel="shortcut icon" href="{{ asset('assets/demo-bower/assets/images/logo/favicon.png') }}">
     <link rel="stylesheet" href="{{ asset('assets/bootstrap/dist/css/bootstrap.css') }}"/>
@@ -25,7 +25,7 @@
             @include('backend.layouts.header')
             @guest
             @else
-                @if (Auth::user()->role == 1)
+                @if (Auth::user()->role == config('app.manager'))
                     @include('backend.layouts.navbar')
                 @else
                     @include('employees.layouts.navbar')
@@ -38,6 +38,9 @@
 
     <script src="{{ asset('assets/demo-bower/assets/js/vendor.js') }}"></script>
     <script src="{{ asset('assets/demo-bower/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('bower_components/demo-bower//assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
+    <script src="{{ asset('bower_components/demo-bower//assets/vendor/jquery.sparkline/jquery.sparkline.min.js') }}"></script>
+    <script src="{{ asset('bower_components/demo-bower//assets/js/dashboard/default.js') }}"></script>
 
 </body>
 
