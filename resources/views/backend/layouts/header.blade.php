@@ -129,18 +129,18 @@
             </li>
             <li class="user-profile dropdown dropdown-animated scale-left">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <img class="profile-img img-fluid" src="{{ asset('assets/images/avatars/thumb-13.jpg') }}" alt="">
+                    <img class="profile-img img-fluid" src="{{ asset(config('app.link_avatar') . Auth::user()->avatar) }}" alt=" ">
                 </a>
                 <ul class="dropdown-menu dropdown-md p-v-0">
                     <li>
                         <ul class="list-media">
                             <li class="list-item p-15">
                                 <div class="media-img">
-                                    <img src="{{ asset('assets/images/avatars/thumb-13.jpg') }}" alt="">
+                                    <img src="{{ asset(config('app.link_avatar') . Auth::user()->avatar) }}" alt=" ">
                                 </div>
                                 <div class="info">
-                                    <span class="title text-semibold"></span>
-                                    <span class="sub-title"></span>
+                                    <span class="title text-semibold">{{ Auth::user()->name }}</span>
+                                    <span class="sub-title">{{ Auth::user()->part }}</span>
                                 </div>
                             </li>
                         </ul>

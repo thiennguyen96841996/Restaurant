@@ -23,7 +23,7 @@
                 </a>
             </li>   
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{ route('vacation.create') }}">
                     <span class="icon-holder"><i class="fa fa-medkit"></i></span>
                     <span class="title">{{ __('vacation') }}</span>
                 </a>
