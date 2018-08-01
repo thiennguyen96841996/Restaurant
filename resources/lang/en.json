@@ -65,7 +65,9 @@
     "reset": "Reset",
     "date_start": "Date start",
     "date_end": "Date end",
+    "date": "Date",
     "create_form": "Create Form",
     "vacation_form": "Form Vacation",
+    "overtime_form": "Form Overtime",
     "vacation_notification": "New User Vacation"
 }

@@ -51,7 +51,7 @@
             @if (Session::has('success'))
                 $.notify(
                 {
-                    icon: 'glyphicon glyphicon-star',
+                    icon: 'mdi mdi-check-circle-outline',
                     message: '{{ Session('success') }}'
                 }, {
                     type: 'success',
@@ -64,7 +64,7 @@
             @elseif (Session::has('error'))
                 $.notify(
                 {
-                    icon: 'glyphicon glyphicon-star',
+                    icon: 'mdi mdi-close-circle-outline',
                     message: '{{ Session('error') }}'
                 }, {
                     type: 'danger',

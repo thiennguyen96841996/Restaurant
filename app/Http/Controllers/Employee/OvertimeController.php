@@ -4,21 +4,21 @@ namespace App\Http\Controllers\Employee;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\VacationFormRequest;
-use App\Http\Requests\VacationUpdateRequest;
-use App\Repositories\Vacation\VacationRepositoryInterface;
+use App\Repositories\Overtime\OvertimeRepositoryInterface;
+use App\Http\Requests\OvertimeFormRequest;
+use App\Http\Requests\OvertimeUpdateRequest;
 use Auth;
 
-class VacationController extends Controller
+class OvertimeController extends Controller
 {
     /**
      * @var PostRepositoryInterface|\App\Repositories\RepositoryInterface
      */
     protected $vacationRepository;
 
-    public function __construct(VacationRepositoryInterface $vacationRepository)
+    public function __construct(OvertimeRepositoryInterface $overtimeRepository)
     {
-        $this->vacationRepository = $vacationRepository;
+        $this->overtimeRepository = $overtimeRepository;
     }
 
     /**
@@ -28,9 +28,9 @@ class VacationController extends Controller
      */
     public function index()
     {
-        $vacations = $this->vacationRepository->getVacationUser();
+        $overtimes = $this->overtimeRepository->getOvertimeUser();
 
-        return view('employees.vacation.index', compact('vacations'));
+        return view('employees.overtime.index', compact('overtimes'));
     }
 
     /**
@@ -40,7 +40,7 @@ class VacationController extends Controller
      */
     public function create()
     {
-        return view('employees.vacation.create');
+        return view('employees.overtime.create');
     }
 
     /**
@@ -49,22 +49,22 @@ class VacationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(VacationFormRequest $request)
+    public function store(OvertimeFormRequest $request)
     {
-        $start = $request->date_start;
-        $end = $request->date_end;
-        $date =$request->date;
-        if ($start > $end || $date <= \Carbon\Carbon::now()) {
+        $date = $request->date;
+        $start = $request->time_start;
+        $end = $request->time_end;
+        if ($date <= \Carbon\Carbon::now()) {
             return redirect()->back()->with('error',  __('create_fail'));
         }
         $data = [
-            'date' => $request->date,
+            'date' => $date,
             'time_start' => $start,
             'time_end' => $end,
             'status' => config('app.waitting'),
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
         ];
-        $this->vacationRepository->create($data);
+        $this->overtimeRepository->create($data);
 
         return redirect()->route('overtime.create')->with('success', __('create_success'));
     }
@@ -77,9 +77,9 @@ class VacationController extends Controller
      */
     public function edit($id)
     {
-        $vacation = $this->vacationRepository->find($id);
+        $overtime = $this->overtimeRepository->find($id);
 
-        return view('employees.vacation.edit', compact('vacation'));
+        return view('employees.overtime.edit', compact('overtime'));
     }
 
     /**
@@ -89,19 +89,20 @@ class VacationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(VacationUpdateRequest $request, $id)
+    public function update(OvertimeUpdateRequest $request, $id)
     {
-        $start = $request->date_start;
-        $end = $request->date_end;
-        if ($start >= $end) {
-            return redirect()->back()->with('error',  __('update_fail'));;
+        $date = $request->date;
+        $start = $request->time_start;
+        $end = $request->time_end;
+        if ($date <= \Carbon\Carbon::now()) {
+            return redirect()->back()->with('error',  __('update_fail'));
         }
         $data = [
-            'date_start' => $start,
-            'date_end' => $end,
-            'content' => $request->content,
+            'date' => $date,
+            'time_start' => $start,
+            'time_end' => $end,
         ];
-        $this->vacationRepository->update($id, $data);
+        $this->overtimeRepository->update($id, $data);
 
         return redirect()->back()->with('success', __('update_success'));
     }
@@ -114,7 +115,7 @@ class VacationController extends Controller
      */
     public function destroy($id)
     {
-        $this->vacationRepository->delete($id);
+        $this->overtimeRepository->delete($id);
 
         return redirect()->back()->with('success', __('delete_success'));
     }
