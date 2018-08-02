@@ -17,7 +17,7 @@
                 </a>
             </li> 
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{ route('overtime.create') }}">
                     <span class="icon-holder"><i class="fa fa-paypal"></i></span>
                     <span class="title">{{ __('overtime') }}</span>
                 </a>

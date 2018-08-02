@@ -28,5 +28,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Vacation\VacationRepositoryInterface::class,
             \App\Repositories\Vacation\VacationEloquentRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Overtime\OvertimeRepositoryInterface::class,
+            \App\Repositories\Overtime\OvertimeEloquentRepository::class
+        );
     }
 }
