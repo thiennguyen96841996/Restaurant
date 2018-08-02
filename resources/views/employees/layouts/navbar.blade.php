@@ -11,7 +11,7 @@
                 </a>
             </li>
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{ route('attend.index') }}">
                     <span class="icon-holder"><i class="fa fa-linux"></i></span>
                     <span class="title">{{ __('attend') }}</span>
                 </a>
