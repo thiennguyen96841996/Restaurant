@@ -12,12 +12,12 @@
                         <div class="header-sub-title">
                             <nav class="breadcrumb breadcrumb-dash">
                                 <a href="{{ route('manager.home') }}" class="breadcrumb-item"><i class="ti-home p-r-5"></i>{{ __('home') }}</a>
-                                <a class="breadcrumb-item" href="{{ route('users.index') }}">{{ __('users') }}</a>
+                                <a class="breadcrumb-item" href="{{ route('profile.index') }}">{{ __('user') }}</a>
                                 <span class="breadcrumb-item active">{{ __('edit') }}</span>
                             </nav>
                         </div>
                     </div>
-                    {!! Form::model($user, ['route' => ['users.update', $user->id]]) !!}
+                    {!! Form::model($employee, ['route' => ['profile.update', $employee->id], 'enctype' => 'multipart/form-data']) !!}
                         {{ method_field('PUT') }}
                         @foreach ($errors->all() as $error)
                             <p class="alert alert-danger">{{ $error }}</p>
@@ -28,29 +28,38 @@
                             </div>
                         @endif
                         {!! csrf_field() !!}
-                        {!! method_field('PUT') !!}
                         <fieldset>
                             <div class="card">
                                 <div class="card-body"> 
                                     <legend class="text-center">  {{ __('Edit Information') }} </legend>
                                     <hr>
                                     <div class="form-group">
+                                        <div class="upload-btn-wrapper">
+                                            <label for="avatar">Avatar:</label>
+                                            <input type="file" name="avatar" />
+                                            <button class="btn-upload">Change avatar</button>
+                                        </div>
+                                    </div>
+                                    @if ($errors->has('avatar'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('avatar') as $avatar)
+                                                    <li>{{ $avatar }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
+                                    <div class="form-group">
                                         {{ Form::label(__('name'), null, ['class' => 'col-lg-2 control-label']) }}
                                         <div class="col-lg-12">
-                                        {{ Form::text('name', $user->name, ['class' => 'form-control', 'placeholder' => 'Name' ]) }}
+                                        {{ Form::text('name', $employee->name, ['class' => 'form-control', 'placeholder' => 'Name' ]) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         {{ Form::label(__('email'), null, ['class' => 'col-lg-2 control-label']) }}  
 
                                         <div class="col-lg-12">
-                                            {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email' ]) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label(__('role'), null, ['class' => 'col-lg-2 control-label']) }}
-                                        <div class="col-lg-12">
-                                            {{ Form::select('role', ['employee' => __('employee_1'), 'manager' => __('manager')], null, ['class' => 'form-control']) }}
+                                            {{ Form::text('email', $employee->email, ['class' => 'form-control', 'placeholder' => 'Email' ]) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -88,7 +97,7 @@
                                     <div class="form-group">
                                         {{ Form::label(__('phone'), null, ['class' => 'col-lg-2 control-label']) }}
                                         <div class="col-lg-12">
-                                            {{ Form::text('phone', $user->phone, ['class' => 'form-control', 'placeholder' => 'Phone Number' ]) }}
+                                            {{ Form::text('phone', $employee->phone, ['class' => 'form-control', 'placeholder' => 'Phone Number' ]) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -100,7 +109,7 @@
                                     <div class="form-group">
                                         {{ Form::label(__('address'), null, ['class' => 'col-lg-2 control-label']) }}
                                         <div class="col-lg-12">
-                                            {{ Form::text('address', $user->address, ['class' => 'form-control', 'placeholder' => 'Address' ]) }}
+                                            {{ Form::text('address', $employee->address, ['class' => 'form-control', 'placeholder' => 'Address' ]) }}
                                         </div>
                                     </div>
                                     <div class="text-center">
