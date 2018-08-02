@@ -24,19 +24,19 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'address',
-        'birthday',
+        'role',
         'avatar',
+        'address',
         'sex',
-        'day_in',
-        'salary_day',
-        'phone'
+        'phone',
+        
     ];
 
     protected $dates = [
         'deleted_at',
         'birthday',
-        'day_in'
+        'day_in',
+        
     ];
 
     /**

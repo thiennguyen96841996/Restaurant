@@ -16,9 +16,7 @@ Auth::routes();
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'manager']
 , function () {
     Route::get('/', 'PagesController@index')->name('manager.home');
-    Route::get('users', "UsersController@index");
-    Route::get('users/{id?}/edit', 'UsersController@edit');
-    Route::post('users/{id?}/edit', 'UsersController@update');
+    Route::resource('users', 'UsersController');
 });
 
 Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee']

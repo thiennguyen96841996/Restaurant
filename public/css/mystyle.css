@@ -31,6 +31,8 @@
 
 .header .header-container .nav-left .user-profile .profile-img, .header .header-container .nav-right .user-profile .profile-img { 
     height: 35px; 
+    cursor: pointer;
+    color: red !important; 
 }
 
 .scrollable {
