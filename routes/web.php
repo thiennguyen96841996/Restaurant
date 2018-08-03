@@ -26,6 +26,7 @@ Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'middleware' =>
     Route::get('/', 'PagesController@index')->name('employee.home');
     Route::resource('vacation', 'VacationController', ['except' => 'show']);
     Route::resource('overtime', 'OvertimeController', ['except' => 'show']);
+    Route::resource('attend', 'AttendController', ['only' => ['index', 'store']]);
 });
 
 Route::get('/', 'HomeController@index')->name('home');
