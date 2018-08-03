@@ -55,6 +55,7 @@
     "cloud": "Cloud",
     "config": "Config", 
     "login": "Login", 
+    "login_get": "Please enter your user name and password to login", 
     "register": "Register", 
     "notification":"Notifications", 
     "setting": "Setting", 

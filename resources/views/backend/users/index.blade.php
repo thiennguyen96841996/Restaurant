@@ -36,14 +36,6 @@
                         <table id="dt-opt" class="table table-hover table-xl">
                             <thead>
                                 <tr>
-                                    <th>
-                                        <div class="checkbox p-0">
-                                            {{ Form::checkbox('checkAll', null, null, [ 'class' => 'checkAll','id' => 'selectable1']) }}
-                                            <!-- <input id="selectable1" type="checkbox" class="checkAll" name="checkAll"> -->
-                                            {{ Form::label(null, null, null, ['for' => 'selectable1']) }}
-                                            <!-- <label for="selectable1"></label> -->
-                                        </div>
-                                    </th>
                                     <th>{{ __('STT') }}</th>
                                     <th>{{ __('name') }}</th>
                                     <th>{{ __('email') }}</th>
@@ -59,14 +51,6 @@
                                 @endphp
                                 @foreach($users as $value)
                                     <tr>
-                                        <td>
-                                            <div class="checkbox">
-                                                {{ Form::checkbox(null, null, false, [ 'id' => 'selectable2']) }}
-                                                <!-- <input id="selectable2" type="checkbox"> -->
-                                                {{ Form::label(null, null, ['for' => 'selectable2']) }}
-                                                <!-- <label for="selectable2"></label> -->
-                                            </div> 
-                                        </td>
                                         <td>{{ $stt++ }}</td>
                                         <td>
                                             <div class="list-media">
@@ -80,10 +64,9 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        
-                                        <td>{!! $value->email !!}</td>
+                                        <td>{!! str_limit($value->email, 20) !!}</td>
                                         <td>{!! $value->phone !!}</td>
-                                        <td>{!! $value->address !!}</td>
+                                        <td>{!! str_limit($value->address, 20) !!}</td>
                                         <td>{{ ($value->sex == 0)? 'Male' : 'Female' }}</td>
                                         <td class="text-center font-size-18">
                                         <a href="{{ route('users.edit', $value->id) }}" class="btn btn-warning btn-rounded swal-function">{{ __('update') }}</a>
@@ -92,7 +75,6 @@
                                             {{ Form::submit(__('delete'), ['class' =>'btn btn-danger btn-rounded swal-pass-param']) }}
                                             {!! Form::close() !!}
                                         </td>
-                                        <!-- <button class="btn btn-danger btn-rounded swal-pass-param">Try Me</button> -->
                                     </tr>
                                 @endforeach
                             </tbody>                        

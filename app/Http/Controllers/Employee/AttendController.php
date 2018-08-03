@@ -38,10 +38,11 @@ class AttendController extends Controller
         $attendsions->date = $timeNow;
         $attendsions->month = $timeNow->month;
         $attendsions->time = $time;
-        if($timeNow->hour <= 7 && $timeNow->minute <= 0) {
+        if($timeNow->hour <= 7) {
             $attendsions->status = 1;
+        } else {
+            $attendsions->status = 0;
         }
-        $attendsions->status = 0;
         $attendsions->user_id = Auth::user()->id;
         $checkExitDate = working::where('user_id', Auth::user()->id)->orderBy('date', 'desc')->value('date');
         $checkExitDate = substr( $checkExitDate , 0, 10);

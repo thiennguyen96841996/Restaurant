@@ -22,20 +22,24 @@
                             <div class="p-15">
                                 <div class="m-b-30">
                                     <img class="img-responsive inline-block" src="{{ asset(config('app.link_logo')) }}" alt="">
-                                    <h2 class="inline-block pull-right m-v-0 p-t-15">Login</h2>
+                                    <h2 class="inline-block pull-right m-v-0 p-t-15">{{ __('login') }}</h2>
                                 </div>
-                                <p class="m-t-15 font-size-13">Please enter your user name and password to login</p>
+                                <p class="m-t-15 font-size-13">{{ __('login_get') }}</p>
                                 {{ Form::open(['method' => 'POST', 'url' => 'login' ]) }}
                                     <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
                                         {{ Form::email('email', old('email'), ['class' => 'form-control', 'id' => 'email', 'required' => 'true', 'autofocus' => 'autofocus', 'placeholder' => __('email')]) }}
                                         @if ($errors->has('email'))
+                                        <span class="help-block error">
                                             <strong>{{ $errors->first('email') }}</strong>
+                                        </span>
                                         @endif
                                     </div>
                                     <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
                                         {{ Form::password('password', ['class' => 'form-control', 'id' => 'password', 'required' => 'true', 'placeholder' => __('password')]) }}
                                         @if ($errors->has('password')) 
+                                        <span class="help-block error">
                                             <strong>{{ $errors->first('password') }}</strong>
+                                        </span>
                                         @endif
                                     </div>
                                     <div class="checkbox font-size-13 d-inline-block p-v-0 m-v-0">

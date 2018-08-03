@@ -53,20 +53,19 @@ class VacationController extends Controller
     {
         $start = $request->date_start;
         $end = $request->date_end;
-        $date =$request->date;
-        if ($start > $end || $date <= \Carbon\Carbon::now()) {
-            return redirect()->back()->with('error',  __('create_fail'));
+        if ($start <= \Carbon\Carbon::now()) {
+            return redirect()->back()->with('error', __('create_fail'));
         }
         $data = [
-            'date' => $request->date,
-            'time_start' => $start,
-            'time_end' => $end,
+            'content' => $request->content,
+            'date_start' => $start,
+            'date_end' => $end,
             'status' => config('app.waitting'),
             'user_id' => Auth::user()->id
         ];
         $this->vacationRepository->create($data);
 
-        return redirect()->route('overtime.create')->with('success', __('create_success'));
+        return redirect()->route('vacation.create')->with('success', __('create_success'));
     }
 
     /**
@@ -93,8 +92,8 @@ class VacationController extends Controller
     {
         $start = $request->date_start;
         $end = $request->date_end;
-        if ($start >= $end) {
-            return redirect()->back()->with('error',  __('update_fail'));;
+        if ($start <= \Carbon\Carbon::now()) {
+            return redirect()->back()->with('error', __('update_fail'));
         }
         $data = [
             'date_start' => $start,
