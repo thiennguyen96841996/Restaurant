@@ -218,5 +218,7 @@ return [
     'waitting' => 0,
     'aprove' => 1,
     'refuse' => 2, 
-    'link_avatar' => 'assets/images/avatars/'
+    'link_avatar' => 'assets/images/avatars/',
+    'link_logo' => 'logo/logohead.png',
+    'profile' => 'https://www.facebook.com/nguyenthien.hy'
 ];

@@ -23,16 +23,16 @@
 
     <div class="app header-default side-nav-dark">
         <div class="layout">
-            @include('backend.layouts.header')
             @guest
             @else
+                @include('backend.layouts.header')
                 @if (Auth::user()->role == config('app.manager'))
                     @include('backend.layouts.navbar')
                 @else
                     @include('employees.layouts.navbar')
                 @endif
+                @include('backend.layouts.config')
             @endguest
-            @include('backend.layouts.config')
             @yield('content')
          </div>
     </div>
