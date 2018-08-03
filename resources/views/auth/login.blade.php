@@ -1,50 +1,59 @@
 @extends('backend.layouts.master')
 @section('title', 'Login')
 @section('content')
-<div class="container">
-    <div class="form-login">
-        <div class="card">
-            <div class="card-header border bottom">
-                <h4 class="card-title">{{ __('login') }}</h4>
-            </div>
-            {{ Form::open(['method' => 'POST', 'url' => 'login' ]) }}
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-8 offset-sm-2">
-                            <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-                                {{ Form::email('email', old('email'), ['class' => 'form-control', 'id' => 'email', 'required' => 'true', 'autofocus' => 'autofocus']) }}
-                                @if ($errors->has('email'))
-                                    <strong>{{ $errors->first('email') }}</strong>
-                                @endif
-                            </div>
-                            <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-                                {{ Form::password('password', ['class' => 'form-control', 'id' => 'password', 'required' => 'true']) }}
-                                @if ($errors->has('password')) 
-                                    <strong>{{ $errors->first('password') }}</strong>
-                                @endif
-                            </div>
-                            <div class="form-row">
-                                <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <div class="checkbox">
-                                            <!-- <input id="formRowCheckbox1" type="checkbox">
-                                            <label for="formRowCheckbox1" name="remember" {{ old('remember') ? 'checked' : '' }}>{{__('Remember Me')}}</a></label> -->
-                                        </div>
-                                    </div>
+<div class="app">
+    <div class="layout bg-gradient-info">
+        <div class="container">
+            <div class="row full-height align-items-center">
+                <div class="col-md-7 d-none d-md-block">
+                    <img class="img-fluid" src="{{ asset(config('app.link_logo')) }}" alt="">
+                    <div class="m-t-15 m-l-20">
+                        <h1 class="font-weight-light font-size-35 text-white">{{ __('title_login') }}</h1>
+                        <p class="text-white width-70 text-opacity m-t-25 font-size-16">{{ __('describe_login') }}</p>
+                        <div class="m-t-60">
+                            <a href= "https://www.facebook.com/nguyenthien.hy" class="text-white text-link m-r-15">{{ __('term_p1') }} &amp; {{ __('term_p2') }}</a>
+                            <a href="https://www.facebook.com/nguyenthien.hy" class="text-white text-link">{{ __('privacy_p1') }} &amp; {{ __('privacy_p2') }}</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="p-15">
+                                <div class="m-b-30">
+                                    <img class="img-responsive inline-block" src="{{ asset(config('app.link_logo')) }}" alt="">
+                                    <h2 class="inline-block pull-right m-v-0 p-t-15">Login</h2>
                                 </div>
-                                <div class="col-sm-6">
-                                    <div class="text-sm-right">
-                                    {{ Form::submit(  __('Login') , array('class' => 'btn btn-gradient-success')) }}
-                                        <a class="btn btn-link" href="{{ route('password.request') }}">
-                                            {{ __('Forgot password') }}
-                                        </a>
+                                <p class="m-t-15 font-size-13">Please enter your user name and password to login</p>
+                                {{ Form::open(['method' => 'POST', 'url' => 'login' ]) }}
+                                    <div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
+                                        {{ Form::email('email', old('email'), ['class' => 'form-control', 'id' => 'email', 'required' => 'true', 'autofocus' => 'autofocus', 'placeholder' => __('email')]) }}
+                                        @if ($errors->has('email'))
+                                            <strong>{{ $errors->first('email') }}</strong>
+                                        @endif
                                     </div>
-                                </div> 
+                                    <div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
+                                        {{ Form::password('password', ['class' => 'form-control', 'id' => 'password', 'required' => 'true', 'placeholder' => __('password')]) }}
+                                        @if ($errors->has('password')) 
+                                            <strong>{{ $errors->first('password') }}</strong>
+                                        @endif
+                                    </div>
+                                    <div class="checkbox font-size-13 d-inline-block p-v-0 m-v-0">
+                                        {{ Form::checkbox('remember', null, false, ['id' => 'remember']) }}
+                                        {{ Form::label('remember', __('Remember me')) }}
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="{{ route('password.request') }}">{{ __('Forgot password') }}</a>
+                                    </div>
+                                    <div class="m-t-20 text-right">
+                                        {{ Form::submit(__('Login'), ['class' => 'btn btn-gradient-success']) }}
+                                    </div>
+                                {{ Form::close() }}
                             </div>
                         </div>
                     </div>
                 </div>
-            {{ Form::close() }}
+            </div>
         </div>
     </div>
 </div>
