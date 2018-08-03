@@ -220,5 +220,8 @@ return [
     'refuse' => 2, 
     'link_avatar' => 'assets/images/avatars/',
     'link_logo' => 'logo/logohead.png',
-    'profile' => 'https://www.facebook.com/nguyenthien.hy'
+    'profile' => 'https://www.facebook.com/nguyenthien.hy',
+    'password' => '123456',
+    'img' => 'assets/images/avatars/',
+    'imgdefault' => 'default-avatar.png',
 ];

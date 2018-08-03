@@ -33,5 +33,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Overtime\OvertimeRepositoryInterface::class,
             \App\Repositories\Overtime\OvertimeEloquentRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\User\UserRepositoryInterface::class,
+            \App\Repositories\User\UserEloquentRepository::class
+        );
     }
 }
