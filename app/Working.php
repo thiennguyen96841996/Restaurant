@@ -14,4 +14,11 @@ class Working extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    public function getWorkingMonths($userId, $month, $status)
+    {
+        $count = Working::where('user_id', $userId)->where('month', $month)->where('status', $status)->count();
+
+        return $count;
+    }
 }

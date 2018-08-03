@@ -17,7 +17,7 @@ class AttendController extends Controller
      */
     public function index()
     {
-        $attends = Working::where('user_id', Auth::user()->id)->get();
+        $attends = Working::where('user_id', Auth::user()->id)->whereMonth('date', Carbon::now()->format('m'))->whereYear('date', Carbon::now()->format('Y'))->orderBy('date')->get();
         $stastics = working::where('user_id', Auth::user()->id)->whereMonth('date', Carbon::now()->format('m'))->whereYear('date', Carbon::now()->format('Y'))->get();
         $lates = working::where('user_id', Auth::user()->id)->whereMonth('date', Carbon::now()->format('m'))->whereYear('date', Carbon::now()->format('Y'))->where('status', 0)->get();
 

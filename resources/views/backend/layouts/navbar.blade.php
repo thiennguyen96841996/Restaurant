@@ -21,12 +21,7 @@
                 </ul>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#">{{ __('attend') }}</a>
-                    </li>
-                </ul>
-                <ul class="dropdown-menu">
-                    <li>
-                        <a href="#">{{ __('work_month') }}</a>
+                        <a href="{{ route('vacations.index') }}">{{ __('work_month')}}</a>
                     </li>
                 </ul>
                 <ul class="dropdown-menu">

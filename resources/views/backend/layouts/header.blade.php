@@ -104,7 +104,8 @@
                     <li>
                         <ul class="list-media overflow-y-auto relative scrollable">
                             <li class="list-item border bottom">
-                                <a href="javascript:void(0);" class="media-hover p-15">
+                                @if (Auth::user()->role == config('app.manager'))
+                                <a href="{{ route('vacations.create') }}" class="media-hover p-15">
                                     <div class="media-img">
                                         <div class="icon-avatar bg-success">
                                             <i class="ti-user"></i>
@@ -117,6 +118,21 @@
                                         <span class="sub-title"></span>
                                     </div>
                                 </a>
+                                @else
+                                <a href="{{ route('vacation.index') }}" class="media-hover p-15">
+                                    <div class="media-img">
+                                        <div class="icon-avatar bg-success">
+                                            <i class="ti-comments-smiley"></i>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="title">
+                                            {{ __('vacation_request') }}
+                                        </span>
+                                        <span class="sub-title"></span>
+                                    </div>
+                                </a>
+                                @endif
                             </li>
                         </ul>
                     </li>
