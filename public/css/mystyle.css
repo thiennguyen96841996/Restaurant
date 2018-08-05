@@ -38,3 +38,11 @@
 .scrollable {
     max-height: none;
 }
+
+img {
+    max-width: 100%;
+}
+
+.error {
+    color: red;
+}

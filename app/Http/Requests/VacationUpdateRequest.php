@@ -25,8 +25,8 @@ class VacationUpdateRequest extends FormRequest
     {
         return [
             'content' => 'required',
-            'date_start' => 'required|date',
-            'date_end' => 'required|date',
+            'date_start' => 'required',
+            'date_end' => 'required|after:date_start',
         ];
     }
 }

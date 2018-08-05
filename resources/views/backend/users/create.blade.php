@@ -27,7 +27,7 @@
                          <hr>
                             <div class="panel-body">
                                 <div class="col-lg-12 col-lg-offset-6">
-                                    { !! Form::open(['method' => 'POST', 'url' => asset('manager/users')]) !!}
+                                    {!! Form::open(['method' => 'POST', 'url' => asset('manager/users')]) !!}
                                         <div class="form-group">
                                             {{ Form::label(__('name'), null, ['class' => 'control-label']) }}
                                             {{ form::text('name', null, ['class' => 'form-control']) }}
