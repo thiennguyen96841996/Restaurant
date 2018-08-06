@@ -56,7 +56,7 @@
                                             <div class="list-media">
                                                 <div class="list-item">
                                                     <div class="media-img">
-                                                        <img src="{{ asset(config('app.img') . $value->avatar) }}" alt=" ">
+                                                        <img src="{{ asset(config('app.link_avatar') . $value->avatar) }}" alt=" ">
                                                     </div>
                                                     <div class="info">
                                                         <span class="title"><a href="{{ route('users.show', $value->id) }}">{!! $value->name !!}</a></span>

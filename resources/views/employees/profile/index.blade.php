@@ -7,23 +7,15 @@
 <div class="page-container">
     <div class="main-content">
         <div class="container-fluid">
-            <div class="container col-md-10 col-md-offset-6">
+            <div class="container">
                 <div class="well well bs-component">
                     <div class="page-header">
-                        @foreach ($errors->all() as $error)
-                            <p class="alert alert-danger">{{ $error }}</p>
-                        @endforeach
-                        @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                        @endif
                         <div class="panel-heading">
                             <h2 class="header-title">{{ __('User') }}</h2>
                             <div class="header-sub-title">
                                 <nav class="breadcrumb breadcrumb-dash">
                                     <a href="{{ route('employee.home') }}" class="breadcrumb-item"><i class="ti-home p-r-5"></i>{{ __('home') }}</a>
-                                    <a class="breadcrumb-item" href=#>{{ __('profile') }}</a>
+                                    <a class="breadcrumb-item" href = "{{ route('profile.index') }}">{{ __('profile') }}</a>
                                     <span class="breadcrumb-item active">{{ __('Information') }}</span>
                                 </nav>
                             </div>

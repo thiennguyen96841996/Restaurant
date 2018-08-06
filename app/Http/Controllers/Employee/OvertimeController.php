@@ -8,6 +8,7 @@ use App\Repositories\Overtime\OvertimeRepositoryInterface;
 use App\Http\Requests\OvertimeFormRequest;
 use App\Http\Requests\OvertimeUpdateRequest;
 use Auth;
+use Carbon\Carbon;
 
 class OvertimeController extends Controller
 {
@@ -54,7 +55,7 @@ class OvertimeController extends Controller
         $date = $request->date;
         $start = $request->time_start;
         $end = $request->time_end;
-        if ($date <= \Carbon\Carbon::now()) {
+        if ($date < Carbon::now()->toDateString('Y:m:d') || $start < Carbon::now()->toTimeString('H:m:i')) {
             return redirect()->back()->with('error',  __('create_fail'));
         }
         $data = [
