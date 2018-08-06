@@ -119,5 +119,9 @@
     "created": "The user has been created!",
     "updated": "The user has been updated!",
     "deleted": "The user has been deleted!",
-    "Confirm_Password": "Confirm_Password"
+    "Confirm_Password": "Confirm_Password",
+    "avatar": "Avatar",
+    "Information": "Information",
+    "updated": "The user has been updated!",
+    "vacation_notification": "New User Vacation"
 }

@@ -1,5 +1,5 @@
 <?php
-namespace App\Repositories\User;
+namespace App\Repositories\Profile;
 
 use App\Repositories\EloquentRepository;
 
@@ -11,7 +11,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
      * @return string
      */
     public function getModel()
-    {  
+    { 
         return \App\User::class;
     }
 
@@ -22,7 +22,7 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
 
     public function getUser()
     {
-        $result = $this->_model->where('role', config('app.employee'))->get();
+        $result = $this->_model->where('role', config('app.employee'))->first();
 
         return $result;
     }

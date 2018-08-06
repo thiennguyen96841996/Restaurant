@@ -5,7 +5,7 @@
                 <span>{{ __('employee') }}</span>
             </li>
             <li class="nav-item dropdown">
-                <a class="dropdown-toggle" href="javascript:void(0);">
+                <a class="dropdown-toggle" href="{{ route('profile.index') }}">
                     <span class="icon-holder"><i class="fa fa-intersex"></i></span>
                     <span class="title">{{ __('profile') }}</span>
                 </a>
