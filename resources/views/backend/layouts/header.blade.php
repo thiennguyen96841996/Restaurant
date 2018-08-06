@@ -118,6 +118,19 @@
                                         <span class="sub-title"></span>
                                     </div>
                                 </a>
+                                <a href="{{ route('overtimes.create') }}" class="media-hover p-15">
+                                    <div class="media-img">
+                                        <div class="icon-avatar bg-success">
+                                            <i class="ti-user"></i>
+                                        </div>
+                                    </div>
+                                    <div class="info">
+                                        <span class="title">
+                                            {{ __('overtime_notification') }}
+                                        </span>
+                                        <span class="sub-title"></span>
+                                    </div>
+                                </a>
                                 @else
                                 <a href="{{ route('vacation.index') }}" class="media-hover p-15">
                                     <div class="media-img">

@@ -18,6 +18,7 @@
     "overtime": "Overtime", 
     "index": "Index",
     "home" : "Home",
+    "hours" : "Hours",
     "Information" : "Information",
     "employees": "Employees", 
     "all_user": "All Users",
@@ -27,6 +28,7 @@
     "phone" : "Phone",
     "address" : "Address",
     "user" : "Users",
+    "part" : "Part",
     "users" : "Users",
     "edit" : "Edit",
     "update" : "Update",
@@ -42,6 +44,7 @@
     "salary": "Salary", 
     "working": "Working",
     "today": "Today",
+    "month": "Month",
     "manager": "Manager",
     "cancel": "Cancel",
     "ok": "Accepct",
@@ -103,6 +106,7 @@
     "privacy_p2": "Policy",
     "name": "Name",
     "day": "Day",
+    "date": "Date",
     "button_attend": "Attend Now",
     "total": "Total",
     "statistic": "Statistical",
@@ -111,6 +115,8 @@
     "submit": "Submit",
     "reset": "Reset",
     "date_start": "Date start",
+    "time_start": "Time start",
+    "time_end": "Time end",
     "date_end": "Date end",
     "date": "Date",
     "attend_fail": "You were attended",
@@ -129,5 +135,6 @@
     "avatar": "Avatar",
     "Information": "Information",
     "updated": "The user has been updated!",
-    "vacation_notification": "New User Vacation"
+    "vacation_notification": "New User Vacation",
+    "overtime_notification": "New User Overtime"
 }

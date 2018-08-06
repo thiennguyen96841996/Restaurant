@@ -18,6 +18,7 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => '
     Route::get('/', 'PagesController@index')->name('manager.home');
     Route::resource('users', 'UsersController');
     Route::resource('vacations', 'ManagerVacationController', ['except' => ['destroy', 'edit', 'store']]);
+    Route::resource('overtimes', 'OvertimeController', ['except' => 'destroy', 'edit', 'store']);
 });
 
 Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee']
