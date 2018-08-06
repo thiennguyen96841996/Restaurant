@@ -68,7 +68,7 @@
                                             @if ($value->status == 0)
                                                 <div class = "badge badge-pill badge-gradient-danger">{{ __('late') }}</div>
                                             @else 
-                                                <div class = "badge badge-pill badge-gradient-success">{{ __('done') }}</div>
+                                                <div class = "badge badge-pill badge-gradient-success">{{ __('yes') }}</div>
                                             @endif
                                         </td>
                                     </tr>
@@ -117,7 +117,7 @@
                                                     @if ($rows->status == 0)
                                                         <div class = "badge badge-pill badge-gradient-danger">{{ __('late') }}</div>
                                                     @else 
-                                                        <div class = "badge badge-pill badge-gradient-success">{{ __('done') }}</div>
+                                                        <div class = "badge badge-pill badge-gradient-success">{{ __('yes') }}</div>
                                                     @endif
                                                 </td>
                                             </tr>
