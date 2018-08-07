@@ -35,38 +35,6 @@ class ProfileController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -91,11 +59,13 @@ class ProfileController extends Controller
         $employee = $this->userRepository->find($id);
         if($request->hasFile('avatar')){
             $file1= $employee->avatar;
-            File::delete(config('app.link_avatar').$file1);
+            File::delete(config('app.link_avatar') . $file1);
             $file = $request->avatar;
-            $file->move(config('app.link_avatar'),$file->getClientOriginalName());
-            $employee->avatar = $file->getClientOriginalName();
-            $employee->save();
+            $file->move(config('app.link_avatar'), $file->getClientOriginalName());
+            $data = [
+                'avatar' => $file->getClientOriginalName(),
+            ];
+            $this->userRepository->update($id, $data);
         }
         $password = $request->get('password');
         if($password != '') {
@@ -104,27 +74,14 @@ class ProfileController extends Controller
             $password = $employee->password;
         }
         $data = [
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
+            'name' => $request->name,
             'password' => $password,
-            'avatar' => $request->get('avatar'),
-            'phone' => $request->get('phone'),
-            'sex' => $request->get('sex'),
-            'address' => $request->get('address'),
+            'phone' => $request->phone,
+            'sex' => $request->sex,
+            'address' => $request->address,
         ];
         $this->userRepository->update($id, $data);
 
-        return redirect()->route('profile.index')->with('status', __('updated'));
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect()->route('profile.index')->with('success', __('updated'));
     }
 }

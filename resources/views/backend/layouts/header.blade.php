@@ -168,12 +168,14 @@
                             <span>{{ __('setting') }}</span>
                         </a>
                     </li>
+                    @if (Auth::user()->role == config('app.employee'))
                     <li>
-                        <a href="#">
+                        <a href="{{ route('profile.index') }}">
                             <i class="ti-user p-r-10"></i>
                             <span>{{ __('profile') }}</span>
                         </a>
                     </li>
+                    @endif
                     <li>
                         <a href="#">
                             <i class="ti-email p-r-10"></i>

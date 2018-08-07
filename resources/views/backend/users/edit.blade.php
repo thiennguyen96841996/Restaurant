@@ -5,7 +5,7 @@
 <div class="page-container">
     <div class="main-content">
         <div class="container-fluid">
-            <div class="container col-md-10 col-md-offset-6">
+            <div class="container">
                 <div class="well well bs-component">
                     <div class="page-header">
                         <h2 class="header-title">{{ __('user') }}</h2>

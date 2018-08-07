@@ -5,7 +5,7 @@
 <div class="page-container">
     <div class="main-content">
         <div class="container-fluid">
-            <div class="container col-md-10 col-md-offset-6">
+            <div class="container">
                 <div class="well well bs-component">
                     <div class="page-header">
                         <h2 class="header-title">{{ __('user') }}</h2>
@@ -19,36 +19,11 @@
                     </div>
                     {!! Form::model($employee, ['route' => ['profile.update', $employee->id], 'enctype' => 'multipart/form-data']) !!}
                         {{ method_field('PUT') }}
-                        @foreach ($errors->all() as $error)
-                            <p class="alert alert-danger">{{ $error }}</p>
-                        @endforeach
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        {!! csrf_field() !!}
                         <fieldset>
                             <div class="card">
                                 <div class="card-body"> 
                                     <legend class="text-center">  {{ __('Edit Information') }} </legend>
                                     <hr>
-                                    <div class="form-group">
-                                        <div class="upload-btn-wrapper">
-                                            <label for="avatar">Avatar:</label>
-                                            <input type="file" name="avatar" />
-                                            <button class="btn-upload">Change avatar</button>
-                                        </div>
-                                    </div>
-                                    @if ($errors->has('avatar'))
-                                        <div class="alert alert-danger">
-                                            <ul>
-                                                @foreach ($errors->get('avatar') as $avatar)
-                                                    <li>{{ $avatar }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div>
-                                    @endif
                                     <div class="form-group">
                                         {{ Form::label(__('name'), null, ['class' => 'col-lg-2 control-label']) }}
                                         <div class="col-lg-12">
@@ -59,7 +34,7 @@
                                         {{ Form::label(__('email'), null, ['class' => 'col-lg-2 control-label']) }}  
 
                                         <div class="col-lg-12">
-                                            {{ Form::text('email', $employee->email, ['class' => 'form-control', 'placeholder' => 'Email' ]) }}
+                                            {{ Form::text('email', $employee->email, ['class' => 'form-control', 'placeholder' => 'Email', 'disabled' => 'disabled']) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -112,11 +87,24 @@
                                             {{ Form::text('address', $employee->address, ['class' => 'form-control', 'placeholder' => 'Address' ]) }}
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <div class="upload-btn-wrapper">
+                                            {{ Form::file('avatar') }} 
+                                            {{ Form::button(__('change_avatar'), ['class' => 'btn-upload']) }}
+                                        </div>
+                                    </div>
+                                    @if ($errors->has('avatar'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('avatar') as $avatar)
+                                                    <li>{{ $avatar }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                    @endif
                                     <div class="text-center">
                                         {{ Form::reset(__('Cancel'), ['class' => 'btn btn-warning']) }}
                                         {{ Form::submit(__('Submit'), ['class' => 'btn btn-success']) }}
-                                        <!-- <button type="reset" class="btn btn-warning btn-warning">Cancel</button> -->
-                                        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
                                     </div>
                                 </div>
                             </div>

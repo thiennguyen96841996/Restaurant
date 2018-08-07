@@ -7,7 +7,7 @@
 <div class="page-container">
     <div class="main-content">
         <div class="container-fluid">
-            <div class="container col-md-10 col-md-offset-6">
+            <div class="container">
                 <div class="well well bs-component">
                     <div class="page-header">
                         <div class="panel-heading">
@@ -31,7 +31,7 @@
                                         <hr>
                                         </div>
                                         <div class="avata text-center">
-                                            <img src="{!! asset(config('app.img').$user->avatar) !!}" class="avata-img img-circle" alt="">
+                                            <img src="{!! asset(config('app.link_avatar') . $user->avatar) !!}" class="avata-img img-circle" alt="">
                                         </div>
                                     </div>
                                     <div class="col-lg-6">

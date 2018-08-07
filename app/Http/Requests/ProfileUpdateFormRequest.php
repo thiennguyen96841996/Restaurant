@@ -24,7 +24,8 @@ class ProfileUpdateFormRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'avatar' => 'image',
+            'repeatpassword '=> 'same:password'
         ];
     }
 }
