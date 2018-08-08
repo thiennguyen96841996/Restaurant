@@ -24,7 +24,9 @@ class UsersAddFormRequest extends FormRequest
     public function rules()
     {
         return [
-                
+            'email' => 'required|email|unique:users|regex:/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}/', 
+            'part' => 'required',
+            'name' => 'required',
         ];
     }
 }

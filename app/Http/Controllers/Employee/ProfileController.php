@@ -59,7 +59,9 @@ class ProfileController extends Controller
         $employee = $this->userRepository->find($id);
         if($request->hasFile('avatar')){
             $file1= $employee->avatar;
-            File::delete(config('app.link_avatar') . $file1);
+            if ($file1 != config('app.imgdefault')) {
+                File::delete(config('app.link_avatar') . $file1);
+            }
             $file = $request->avatar;
             $file->move(config('app.link_avatar'), $file->getClientOriginalName());
             $data = [

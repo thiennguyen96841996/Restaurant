@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -29,7 +30,9 @@ class User extends Authenticatable
         'address',
         'sex',
         'phone',
-        
+        'salary_day',
+        'part',
+        'day_in',
     ];
 
     protected $dates = [
@@ -63,5 +66,18 @@ class User extends Authenticatable
     public function salaries() {
         return $this->hasMany(Salary::class);
     }
-}
 
+    public function getWorkingMonths($userId, $month, $status)
+    {
+        $count = Working::where('user_id', $userId)->where('month', $month)->where('status', $status)->count();
+
+        return $count;
+    }
+
+    public function getOvertimeMonths($userId)
+    {
+        $hour = Overtime::where('user_id', $userId)->whereMonth('date', Carbon::now()->format('m'))->where('status', 1)->sum('hours');
+
+        return $hour;
+    }
+}

@@ -50,6 +50,22 @@
                                             {{ $user->phone }}
                                         </div>
                                         <div class="form-group">
+                                            {{ Form::label(__('birth_day :'), null, ['class' => 'control-label']) }}
+                                            {{ $user->birthday }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ Form::label(__('part :'), null, ['class' => 'control-label']) }}
+                                            {{ $user->part }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ Form::label(__('salary_day :'), null, ['class' => 'control-label']) }}
+                                            {{ $user->salary_day }} {{ __('$') }}
+                                        </div>
+                                        <div class="form-group">
+                                            {{ Form::label(__('day_in :'), null, ['class' => 'control-label']) }}
+                                            {{ $user->day_in }}
+                                        </div>
+                                        <div class="form-group">
                                             {{ Form::label(__('sex :'), null, ['class' => 'control-label']) }}
                                             {{ ($user->sex == 0) ? 'Male' : 'Female' }}
                                         </div>
@@ -68,7 +84,7 @@
                                     </div>
                                 </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                 </div>
             </div>

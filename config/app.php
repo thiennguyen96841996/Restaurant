@@ -214,6 +214,11 @@ return [
 
     ],
     'manager' => 'manager',
+    'chef' => 'chef',
+    'chef_salary' => 3000,
+    'shipper_salary' => 2000,
+    'other_salary' => 1000,
+    'shipper' => 'shipper',
     'employee' => 'employee',
     'waitting' => 0,
     'aprove' => 1,

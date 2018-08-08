@@ -1,7 +1,7 @@
 <div class="header navbar">
     <div class="header-container">
         <div class="nav-logo">
-            <a href="#">
+            <a href="{{ route('manager.home') }}">
                 <div class="logo logo-dark"></div>
                 <div class="logo logo-white"></div>
             </a>

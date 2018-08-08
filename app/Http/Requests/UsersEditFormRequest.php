@@ -24,7 +24,7 @@ class UsersEditFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'sometimes',
+            'repeatpassword' => 'same:password',
         ];
     }
 }
