@@ -71,5 +71,18 @@ class OvertimeEloquentRepository extends EloquentRepository implements OvertimeR
             ->get();
             
         return $result;
+    }
+    
+    public function getShowMonthOvertimeNotifications($id)
+    {
+        $result = $this->_model->where('user_id', $id)
+            ->whereMonth('date', Carbon::now()
+            ->format('m'))
+            ->whereYear('date', Carbon::now()->format('Y'))
+            ->orderBy('created_at', 'desc')
+            ->limit(1)
+            ->get();
+            
+        return $result;
     } 
 }

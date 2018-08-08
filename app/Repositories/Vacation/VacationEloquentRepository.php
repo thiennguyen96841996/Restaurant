@@ -3,6 +3,7 @@ namespace App\Repositories\Vacation;
 
 use App\Repositories\EloquentRepository;
 use Auth;
+use Carbon\Carbon;
 
 class VacationEloquentRepository extends EloquentRepository implements VacationRepositoryInterface
 {
@@ -27,4 +28,17 @@ class VacationEloquentRepository extends EloquentRepository implements VacationR
 
         return $result;
     }
+
+    public function getShowMonthVacationNotifications($id)
+    {
+        $result = $this->_model->where('user_id', $id)
+            ->whereMonth('date_start', Carbon::now()
+            ->format('m'))
+            ->whereYear('date_start', Carbon::now()->format('Y'))
+            ->orderBy('created_at', 'desc')
+            ->limit(1)
+            ->get();
+            
+        return $result;
+    } 
 }
