@@ -58,10 +58,14 @@ class OvertimeController extends Controller
         if ($date < Carbon::now()->toDateString('Y:m:d') || $start < Carbon::now()->toTimeString('H:m:i')) {
             return redirect()->back()->with('error',  __('create_fail'));
         }
+        $toTime = strtotime($end);
+        $fromTime = strtotime($start);
+        $hour = ceil($toTime - $fromTime) / (60 * 60);
         $data = [
             'date' => $date,
             'time_start' => $start,
             'time_end' => $end,
+            'hours' => $hour,
             'status' => config('app.waitting'),
             'user_id' => Auth::user()->id,
         ];

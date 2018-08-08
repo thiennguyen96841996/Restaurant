@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'vacation')
+@section('title', 'Overtime')
 @section('style')
 {{ Html::style('assets/demo-bower/assets/vendor/datatables/media/css/dataTables.bootstrap4.min.css') }}
 @endsection
@@ -8,11 +8,11 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="page-header">
-                <h2 class="header-title">{{ __('vacation') }}</h2>
+                <h2 class="header-title">{{ __('overtime') }}</h2>
                 <div class="header-sub-title">
                     <nav class="breadcrumb breadcrumb-dash">
-                        <a href="#" class="breadcrumb-item"><i class="ti-home p-r-5"></i>{{ __('home') }}</a>
-                        <a class="breadcrumb-item" href="{{ route('vacations.index') }}">{{ __('vacation') }}</a>
+                        <a href="manager.home" class="breadcrumb-item"><i class="ti-home p-r-5"></i>{{ __('home') }}</a>
+                        <a class="breadcrumb-item" href="{{ route('overtimes.index') }}">{{ __('overtime') }}</a>
                         <span class="breadcrumb-item active">{{ __('handling') }}</span>
                     </nav>
                 </div>
@@ -24,9 +24,8 @@
                             <thead>
                                 <tr>
                                     <th>{{ __('name') }}</th>
-                                    <th>{{ __('content') }}</th>
-                                    <th>{{ __('date_start') }}</th>
-                                    <th>{{ __('date_end') }}</th>
+                                    <th>{{ __('time_start') }}</th>
+                                    <th>{{ __('time_end') }}</th>
                                     <th class="text-center">Actions</th>
                                 </tr>
                             </thead>
@@ -46,14 +45,13 @@
                                             </div>
                                         </div>
                                     </td>
-                                    <td>{!! str_limit($value->content, 20) !!}</td>
-                                    <td>{{ $value->date_start }}</td>
-                                    <td>{{ $value->date_end }}</td>
+                                    <td>{{ $value->time_start }}</td>
+                                    <td>{{ $value->time_end }}</td>
                                     <td class="text-center font-size-18">
-                                        {!! Form::model($notis, ['route' => ['vacations.update', $value->id]]) !!}
+                                        {!! Form::model($notis, ['route' => ['overtimes.update', $value->id]]) !!}
                                             {{ method_field('PUT') }}
-                                            {!! Form::submit('approve', ['class' => 'btn btn-success', 'name' => 'approve']) !!}
-                                            {!! Form::submit('refuse', ['class' => 'btn btn-default', 'name' => 'refuse']) !!}
+                                            {!! Form::submit('Aprove', ['class' => 'btn btn-success', 'name' => 'approve']) !!}
+                                            {!! Form::submit('Refuse', ['class' => 'btn btn-default', 'name' => 'refuse']) !!}
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

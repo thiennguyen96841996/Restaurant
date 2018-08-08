@@ -26,7 +26,7 @@
                 </ul>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#">{{ __('overtime') }}</a>
+                        <a href="{{ route('overtimes.index') }}">{{ __('overtime') }}</a>
                     </li>
                 </ul>
                 <ul class="dropdown-menu">

@@ -67,7 +67,7 @@ class ManagerVacationController extends Controller
     public function update(Request $request, $id)
     {
         $noti = Vacation::findOrFail($id);
-        if (isset($_POST['aprove'])) {
+        if ($request->approve) {
             $noti->status = 1;
         } else {
             $noti->status = 2;
