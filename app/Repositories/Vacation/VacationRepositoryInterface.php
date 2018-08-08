@@ -8,4 +8,6 @@ interface VacationRepositoryInterface
      * @return mixed
      */
     public function getVacationUser();
+
+    public function getShowMonthVacationNotifications($id);
 }

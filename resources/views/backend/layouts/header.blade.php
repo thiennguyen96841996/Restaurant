@@ -132,7 +132,7 @@
                                     </div>
                                 </a>
                                 @else
-                                <a href="{{ route('vacation.index') }}" class="media-hover p-15">
+                                <a href="{{ route('notifications.show', Auth::user()->id) }}" class="media-hover p-15">
                                     <div class="media-img">
                                         <div class="icon-avatar bg-success">
                                             <i class="ti-comments-smiley"></i>

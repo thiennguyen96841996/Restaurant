@@ -1,5 +1,5 @@
 @extends('backend.layouts.master')
-@section('title', 'Overtime')
+@section('title', 'Notifications')
 @section('style')
     {{ Html::style('assets/demo-bower/assets/vendor/datatables/media/css/dataTables.bootstrap4.min.css') }}
 @endsection
@@ -8,11 +8,11 @@
     <div class="main-content">
         <div class="container-fluid">
             <div class="page-header">
-                <h2 class="header-title">{{ __('overtime') }}</h2>
+                <h2 class="header-title">{{ __('notification') }}</h2>
                 <div class="header-sub-title">
                     <nav class="breadcrumb breadcrumb-dash">
                         <a href="{{ route('overtimes.index') }}" class="breadcrumb-item"><i class="ti-home p-r-5"></i>{{ __('home') }}</a>
-                        <a class="breadcrumb-item" href="{{ route('overtimes.index') }}">{{ __('overtime') }}</a>
+                        <a class="breadcrumb-item" href="{{ route('overtimes.index') }}">{{ __('notification') }}</a>
                         <span class="breadcrumb-item active">{{ __('Information') }}</span>
                     </nav>
                 </div>
@@ -23,29 +23,30 @@
                         <div class="card-body">
                             <div class="table-overflow">
                                 <div class="card-header border bottom text-center">
-                                    <h4 class="card-title">{{ __('today') }} {{ $date->toDateString() }}</h4>
+                                    <h4 class="card-title">{{ __('request') }} {{ __('vacation') }}</h4>
                                 </div>
                                 <table class="table table-hover table-xl">
                                     <thead>
                                         <tr>
-                                            <th>{{ __('STT') }}</th>
-                                            <th>{{ __('name') }}</th>
-                                            <th>{{ __('time_start') }}</th>
-                                            <th>{{ __('time_end') }}</th>
-                                            <th>{{ __('hours') }}</th>
+                                            <th>{{ __('date_start') }}</th>
+                                            <th>{{ __('date_end') }}</th>
+                                            <th>{{ __('status') }}</th>
                                         </tr>
                                     </thead>
-                                    <tbody> 
-                                        @php
-                                            $stt = 1;
-                                        @endphp
-                                        @foreach($overtimes as $value)
+                                    <tbody>
+                                        @foreach($vacationMonth as $value)
                                             <tr>
-                                                <td>{{ $stt++ }}</td>
-                                                <td>{!! $value->user->name !!}</td>
-                                                <td>{!! $value->time_start !!}</td>
-                                                <td>{!! $value->time_end !!}</td>
-                                                <td>{!! str_limit($value->hours, 4) !!}</td>
+                                                <td>{!! $value->date_start !!}</td>
+                                                <td>{!! $value->date_end !!}</td>
+                                                <td>
+                                                    @if ($value->status == 0)
+                                                        <div class = "badge badge-pill badge-warning">{{ __('wait') }}</div>
+                                                    @elseif ($value->status == 1) 
+                                                        <div class = "badge badge-pill badge-gradient-success">{{ __('aproved') }}</div>
+                                                    @else 
+                                                        <div class = "badge badge-pill badge-gradient-danger">{{ __('refused') }}</div>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -60,28 +61,31 @@
                             <div class="table-overflow">
                                 <table class="table table-hover table-xl">
                                     <div class="card-header border bottom text-center">
-                                        <h4 class="card-title">{{ __('Month') }} {{ $date->month }}</h4>
+                                        <h4 class="card-title">{{ __('request') }} {{ __('overtime') }}</h4>
                                     </div>
                                     <thead>
                                         <tr>
-                                            <th>{{ __('STT') }}</th>
                                             <th>{{ __('date') }}</th>
                                             <th>{{ __('time_start') }}</th>
                                             <th>{{ __('time_end') }}</th>
-                                            <th>{{ __('hours') }}</th>
+                                            <th>{{ __('status') }}</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @php
-                                            $stt = 1;
-                                        @endphp
                                         @foreach($overtimeMonth as $value)
                                             <tr>
-                                                <td>{{ $stt++ }}</td>
                                                 <td>{!! $value->date !!}</td>
                                                 <td>{!! $value->time_start !!}</td>
                                                 <td>{!! $value->time_end !!}</td>
-                                                <td>{!! str_limit($value->hours, 4) !!}</td>
+                                                <td>
+                                                    @if ($value->status == 0)
+                                                        <div class = "badge badge-pill badge-warning">{{ __('wait') }}</div>
+                                                    @elseif ($value->status == 1) 
+                                                        <div class = "badge badge-pill badge-gradient-success">{{ __('aproved') }}</div>
+                                                    @else 
+                                                        <div class = "badge badge-pill badge-gradient-danger">{{ __('refused') }}</div>
+                                                    @endif
+                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
