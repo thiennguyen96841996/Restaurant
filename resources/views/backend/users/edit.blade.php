@@ -19,15 +19,6 @@
                     </div>
                     {!! Form::model($user, ['route' => ['users.update', $user->id]]) !!}
                         {{ method_field('PUT') }}
-                        @foreach ($errors->all() as $error)
-                            <p class="alert alert-danger">{{ $error }}</p>
-                        @endforeach
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-                        {!! csrf_field() !!}
                         {!! method_field('PUT') !!}
                         <fieldset>
                             <div class="card">
@@ -35,22 +26,9 @@
                                     <legend class="text-center">  {{ __('Edit Information') }} </legend>
                                     <hr>
                                     <div class="form-group">
-                                        {{ Form::label(__('name'), null, ['class' => 'col-lg-2 control-label']) }}
-                                        <div class="col-lg-12">
-                                        {{ Form::text('name', $user->name, ['class' => 'form-control', 'placeholder' => 'Name' ]) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
                                         {{ Form::label(__('email'), null, ['class' => 'col-lg-2 control-label']) }}  
-
                                         <div class="col-lg-12">
-                                            {{Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email' ]) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label(__('role'), null, ['class' => 'col-lg-2 control-label']) }}
-                                        <div class="col-lg-12">
-                                            {{ Form::select('role', ['employee' => __('employee_1'), 'manager' => __('manager')], null, ['class' => 'form-control']) }}
+                                            {{ Form::text('email', $user->email, ['class' => 'form-control', 'placeholder' => 'Email', 'disabled' => 'disabled']) }}
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -86,28 +64,14 @@
                                         </div>
                                     @endif
                                     <div class="form-group">
-                                        {{ Form::label(__('phone'), null, ['class' => 'col-lg-2 control-label']) }}
+                                        {{ Form::label(__('part'), null, ['class' => 'col-lg-2 control-label']) }}
                                         <div class="col-lg-12">
-                                            {{ Form::text('phone', $user->phone, ['class' => 'form-control', 'placeholder' => 'Phone Number' ]) }}
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label(__('sex'), null, ['class' => 'col-lg-2 control-label']) }}
-                                        <div class="col-lg-12">
-                                            {{ Form::select('sex', ['0' => __('male'), '1' => __('female')], null, ['class' => 'form-control']) }}  
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        {{ Form::label(__('address'), null, ['class' => 'col-lg-2 control-label']) }}
-                                        <div class="col-lg-12">
-                                            {{ Form::text('address', $user->address, ['class' => 'form-control', 'placeholder' => 'Address' ]) }}
+                                            {{ Form::select('part', ['employee' => __('employee_part'), 'shipper' => __('shipper'), 'chef' => __('chef')], null, ['class' => 'form-control']) }}  
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         {{ Form::reset(__('Cancel'), ['class' => 'btn btn-warning']) }}
                                         {{ Form::submit(__('Submit'), ['class' => 'btn btn-success']) }}
-                                        <!-- <button type="reset" class="btn btn-warning btn-warning">Cancel</button> -->
-                                        <!-- <button type="submit" class="btn btn-success">Submit</button> -->
                                     </div>
                                 </div>
                             </div>

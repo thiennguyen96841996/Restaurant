@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Repositories\User\UserRepositoryInterface;
 use App\User;
 use Auth;
+use Carbon\Carbon;
 
 class UsersController extends Controller
 {
@@ -52,22 +53,30 @@ class UsersController extends Controller
      */
     public function store(UsersAddFormRequest $request)
     {
-        $users = new User();
         $password = bcrypt(config('app.password'));
         $avatar = config('app.imgdefault');
+        $part = $request->part;
+        if ($part == config('app.chef')) {
+            $salary_day = config('app.chef_salary');
+        } else if ($part == config('app.shipper')) {
+            $salary_day = config('app.shipper_salary');
+        } else {
+            $salary_day = config('app.other_salary');
+        }
+        $day_in = Carbon::now()->toDateString('Y:m:d');
         $data = [
-            'user_id' => Auth::user()->id,
+            'day_in' => $day_in,
             'name' => $request->name,
             'email' => $request->email,
             'password' => $password,
             'avatar' => $avatar,
-            'phone' => $request->phone,
-            'sex' => $request->sex,
-            'role' => $request->role,
+            'role' => config('app.employee'),
+            'salary_day' => $salary_day,
+            'part' => $request->part,
         ];
         $this->userRepository->create($data);
        
-        return redirect()->route('users.index')->with('status', __('created'));
+        return redirect()->route('users.index')->with('success', __('created'));
     }
 
     /**
@@ -105,7 +114,6 @@ class UsersController extends Controller
      */
     public function update($id, UsersEditFormRequest $request)
     {
-        // $user = new User();
         $user = $this->userRepository->find($id);
         $password = $request->get('password');
         if($password != '') {
@@ -113,18 +121,22 @@ class UsersController extends Controller
         } else {
             $password = $user->password;
         }
+        $part = $request->part;
+        if ($part == config('app.chef')) {
+            $salary_day = config('app.chef_salary');
+        } else if ($part == config('app.shipper')) {
+            $salary_day = config('app.shipper_salary');
+        } else {
+            $salary_day = config('app.other_salary');
+        }
         $data = [
-            'name' => $request->get('name'),
-            'email' => $request->get('email'),
             'password' => $password,
-            'phone' => $request->get('phone'),
-            'sex' => $request->get('sex'),
-            'role' => $request->get('role'),
-            'address' => $request->get('address'),
+            'salary_day' => $salary_day,
+            'part' => $request->get('part'),
         ];
         $this->userRepository->update($id, $data);
 
-        return redirect()->route('users.index')->with('status', __('updated'));
+        return redirect()->route('users.index')->with('success', __('updated'));
     }
 
 
@@ -139,6 +151,6 @@ class UsersController extends Controller
         $users = $this->userRepository->find($id);
         $users->delete();
 
-        return redirect()->route('users.index')->with('status', __('deleted'));
+        return redirect()->route('users.index')->with('success', __('deleted'));
     }
 }

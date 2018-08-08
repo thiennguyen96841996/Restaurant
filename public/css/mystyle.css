@@ -69,3 +69,11 @@ img {
     top: 0;
     opacity: 0;
 }
+
+.head {
+    margin-left: 150px;
+}
+
+.modal_button {
+    margin-right: 150px;
+}

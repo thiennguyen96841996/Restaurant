@@ -43,7 +43,7 @@
     {{ Html::script('assets/demo-bower/assets/js/app.min.js') }}
     {{ Html::script('assets/demo-bower/assets/vendor/chart.js/dist/Chart.min.js') }}
     {{ Html::script('assets/demo-bower/assets/vendor/jquery.sparkline/jquery.sparkline.min.js') }}
-    {{ Html::script('assets/demo-bower/assets/js/dashboard/default.js') }}
+    {{ Html::script('assets/demo-bower/assets/js/dashboard/bank.js') }}
     @yield('script')
     {{ Html::script('assets/remarkable-bootstrap-notify/dist/bootstrap-notify.min.js') }}
     <script type="text/javascript">

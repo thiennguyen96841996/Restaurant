@@ -30,29 +30,33 @@
                                     {!! Form::open(['method' => 'POST', 'url' => asset('manager/users')]) !!}
                                         <div class="form-group">
                                             {{ Form::label(__('name'), null, ['class' => 'control-label']) }}
-                                            {{ form::text('name', null, ['class' => 'form-control']) }}
+                                            {{ Form::text('name', null, ['class' => 'form-control', 'placeholder' => 'Name' ]) }}
                                         </div>
-                                          
+                                        @if ($errors->has('name'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('name') as $name)
+                                                    <li>{{ $name }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
+                                        @endif
                                          <div class="form-group">
                                             {{ Form::label(__('email'), null, ['class' => 'control-label']) }}
                                             {{ Form::text('email', '@gmail.com', ['class' => 'form-control']) }}
                                         </div>
-                                          @if ($errors->has('email'))
-                                            <div class="alert alert-danger">
-                                                <ul>
-                                                    @foreach ($errors->get('email') as $email)
-                                                        <li>{{ $email }}</li>
-                                                    @endforeach
-                                                </ul>
-                                            </div>
+                                        @if ($errors->has('email'))
+                                        <div class="alert alert-danger">
+                                            <ul>
+                                                @foreach ($errors->get('email') as $email)
+                                                    <li>{{ $email }}</li>
+                                                @endforeach
+                                            </ul>
+                                        </div>
                                         @endif
                                         <div class="form-group">
-                                            {{ Form::label(__('sex'), null, ['class' => 'control-label']) }}
-                                            {{ Form::select('sex', ['0' => __('male'), '1' => __('female')], null, ['class' => 'form-control']) }}
-                                        </div>
-                                        <div class="form-group">
-                                            {{ Form::label(__('role'), null, ['class' => 'control-label']) }}
-                                            {{ Form::select('role', ['employee' => __('employee_1'), 'manager' => __('manager')], null, ['class' => 'form-control']) }}
+                                            {{ Form::label(__('part'), null, ['class' => 'control-label']) }}
+                                            {{ Form::select('part', ['employee' => __('employee_part'), 'shipper' => __('shipper'), 'chef' => __('chef')], null, ['class' => 'form-control']) }}  
                                         </div>
                                         <div class="text-center">
                                             {{ Form::reset(__('Reset'), ['class' => 'btn btn-default']) }}
