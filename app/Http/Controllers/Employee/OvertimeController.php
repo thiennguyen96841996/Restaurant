@@ -55,7 +55,7 @@ class OvertimeController extends Controller
         $date = $request->date;
         $start = $request->time_start;
         $end = $request->time_end;
-        if ($date < Carbon::now()->toDateString('Y:m:d') || $start < Carbon::now()->toTimeString('H:m:i')) {
+        if ($date < Carbon::now()->toDateString('Y:m:d') && $start < Carbon::now()->toTimeString('H:m:i')) {
             return redirect()->back()->with('error',  __('create_fail'));
         }
         $toTime = strtotime($end);

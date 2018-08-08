@@ -31,7 +31,7 @@
                 </ul>
                 <ul class="dropdown-menu">
                     <li>
-                        <a href="#">{{ __('salary') }}</a>
+                        <a href="{{ route('salary.index') }}">{{ __('salary') }}</a>
                     </li>
                 </ul>
             </li>

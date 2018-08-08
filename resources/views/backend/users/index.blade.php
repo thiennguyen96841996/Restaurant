@@ -60,10 +60,13 @@
                                             </div>
                                         <td>{!! str_limit($value->email, 20) !!}</td>
                                         <td>{!! $value->salary_day !!} {{ __('$') }}</td>
-                                        <td class="text-center font-size-18">
+                                        <td class="font-size-18">
                                             <a href="{{ route('users.edit', $value->id) }}" class="text-gray m-r-15" data-toggle="tooltip" data-placement="top" title="{{ __('update') }}"><i class="ti-pencil"></i></a>
-                                            <a data-toggle="modal" data-target="#basic-modal" class="text-gray m-r-15"><i class="ti-trash"></i></a>
-                                            <a href="#" class="text-gray m-r-15" data-toggle="tooltip" data-placement="top" title="{{ __('salary') }}"><i class="ti-money"></i></a>
+                                            <a data-toggle="modal" data-target="#basic-modal" data-url="{{ route('users.destroy', $value->id) }}" class="text-gray m-r-15"><i class="ti-trash"></i></a>
+                                            @if (($value->salaries->where('month', date('m'))->where('year', date('Y'))->count() != 0))
+                                            @else
+                                            <a href="{{ route('salary.create', $value->id) }}" class="text-gray m-r-15" data-toggle="tooltip" data-placement="top" title="{{ __('salary') }}"><i class="ti-money"></i></a>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -90,8 +93,7 @@
                         <div class="modal_button">
                             <div class="row"> 
                                 {{ Form::button(__('cancel'), ['class' =>'btn btn-default', 'data-dismiss' => 'modal']) }}
-                                {!! Form::model($users, ['route' => ['users.destroy', $value->id]]) !!}
-                                    {{ method_field('DELETE') }}
+                                {!! Form::open(['id' => 'del-form', 'method' => 'delete']) !!}
                                     {{ Form::submit(__('delete'), ['class' =>'btn btn-danger']) }}
                                 {!! Form::close() !!}
                             </div>
@@ -108,4 +110,12 @@
     {{ Html::script('assets/demo-bower/assets/vendor/datatables/media/js/jquery.dataTables.js') }}
     {{ Html::script('assets/demo-bower/assets/vendor/datatables/media/js/dataTables.bootstrap4.min.js') }}
     {{ Html::script('assets/demo-bower/assets/js/tables/data-table.js') }}
+    <script type="text/javascript">
+        $(function() {
+            $('#basic-modal').on('show.bs.modal', function(e) {
+                var url = $(e.relatedTarget).data('url');
+                $('#del-form').attr('action', url);
+            });
+        });
+    </script>
 @endsection
