@@ -19,7 +19,6 @@
                     </div>
                     {!! Form::model($user, ['route' => ['users.update', $user->id]]) !!}
                         {{ method_field('PUT') }}
-                        {!! method_field('PUT') !!}
                         <fieldset>
                             <div class="card">
                                 <div class="card-body"> 

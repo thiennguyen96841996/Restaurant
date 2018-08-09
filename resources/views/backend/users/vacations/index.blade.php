@@ -102,7 +102,7 @@
                                                 <div class="list-media">
                                                     <div class="list-item">
                                                         <div class="media-img">
-                                                            <img src="{{ asset(config('app.link_avatar') . Auth::user()->avatar) }}" alt=" ">
+                                                            <img src="{{ asset(config('app.link_avatar') . $value->user->avatar) }}" alt=" ">
                                                         </div>
                                                         <div class="info">
                                                             <span class="title">{{ $value->user->name }}</span>

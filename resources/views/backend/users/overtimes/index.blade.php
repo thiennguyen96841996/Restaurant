@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-7">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-overflow">
@@ -48,7 +48,8 @@
                                                             <div class="media-img">
                                                                 <img src="{{ asset(config('app.link_avatar') . $value->user->avatar) }}" alt=" ">
                                                             </div>
-                                                            <span class="title"><a href="{{ route('overtimes.show', $value->user->id) }}">{!! $value->user->name !!}</a></span>
+                                                            <div class="info">
+                                                                <span class="title"><a href="{{ route('overtimes.show', $value->user->id) }}">{!! $value->user->name !!}</a></span>
                                                                 <span class="sub-title">{{ $value->user->part }}</span>
                                                             </div>
                                                         </div>
@@ -65,7 +66,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-5">
                     <div class="card">
                         <div class="card-body">
                             <div class="table-overflow">
@@ -77,7 +78,6 @@
                                         <tr>
                                             <th>{{ __('STT') }}</th>
                                             <th>{{ __('name') }}</th>
-                                            <th>{{ __('part') }}</th>
                                             <th>{{ __('hours') }}</th>
                                         </tr>
                                     </thead>
@@ -94,13 +94,13 @@
                                                             <div class="media-img">
                                                                 <img src="{{ asset(config('app.link_avatar') . $value->user->avatar) }}" alt=" ">
                                                             </div>
-                                                            <span class="title"><a href="{{ route('overtimes.show', $value->user->id) }}">{!! $value->user->name !!}</a></span>
+                                                            <div class="info">
+                                                                <span class="title"><a href="{{ route('overtimes.show', $value->user->id) }}">{!! $value->user->name !!}</a></span>
                                                                 <span class="sub-title">{{ $value->user->part }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </td>
-                                                <td>{!! $value->part !!}</td>
                                                 <td>{!! str_limit($value->getOvertimeMonths($value->user->id), 4) !!}</td>
                                             </tr>
                                         @endforeach

@@ -77,3 +77,11 @@ img {
 .modal_button {
     margin-right: 150px;
 }
+
+.form_text {
+    margin-left: 10px;
+}
+
+.form_label {
+    margin-left: 25px;
+}

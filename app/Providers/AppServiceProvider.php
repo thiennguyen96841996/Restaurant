@@ -48,5 +48,10 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Overtime\OvertimeRepositoryInterface::class,
             \App\Repositories\overtime\OvertimeEloquentRepository::class
         );
+
+        $this->app->singleton(
+            \App\Repositories\Salary\SalaryRepositoryInterface::class,
+            \App\Repositories\Salary\SalaryEloquentRepository::class
+        );
     }
 }
