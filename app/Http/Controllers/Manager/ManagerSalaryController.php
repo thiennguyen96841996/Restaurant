@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Overtime;
 use App\Working;
 use App\Vacation;
+use App\Salary;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Mail;

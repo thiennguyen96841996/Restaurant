@@ -53,7 +53,7 @@
                                                         <img src="{{ asset(config('app.link_avatar') . $value->avatar) }}" alt=" ">
                                                     </div>
                                                     <div class="info">
-                                                        <span class="title"><a href="{{ route('users.show', $value->id) }}">{!! $value->name !!}</a></span>
+                                                        <span class="title"><a href="#" data-value="{{ $value }}" data-toggle="modal" data-target="#modal-lg" id = "show-user">{!! $value->name !!}</a></span>
                                                         <span class="sub-title">{{ $value->part }}</span>
                                                     </div>
                                                 </div>
@@ -102,6 +102,71 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="avata-name">
+                                    <legend class="avata text-center">{{ __('avatar') }}</legend>
+                                    <hr>
+                                    </div>
+                                    <div class="avata text-center">
+                                        <img id = "avatar" class="avata-img img-circle" alt="">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                <legend class="avata text-center">{{ __('Information') }}</legend>
+                                <hr>
+                                    <div class="form-group">
+                                        {{ Form::label(__('name :'), null, ['class' => 'control-label']) }}
+                                        <span id ="name"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('email :'), null, ['class' => 'control-label']) }}
+                                        <span id ="email"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('phone :'), null, ['class' => 'control-label']) }}
+                                        <span id ="phone"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('birth_day :'), null, ['class' => 'control-label']) }}
+                                        <span id ="birthday"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('part :'), null, ['class' => 'control-label']) }}
+                                        <span id ="part"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('salary_day :'), null, ['class' => 'control-label']) }}
+                                        <span id ="salaryday"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('day_in :'), null, ['class' => 'control-label']) }}
+                                        <span id ="dayin"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('sex :'), null, ['class' => 'control-label']) }}
+                                        <span id ="sex"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('address :'), null, ['class' => 'control-label']) }}
+                                        <span id ="address"></span>
+                                    </div>
+                                    <div class="form-group">
+                                        {{ Form::label(__('role :'), null, ['class' => 'control-label']) }}
+                                        <span id ="role"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection
@@ -115,6 +180,20 @@
             $('#basic-modal').on('show.bs.modal', function(e) {
                 var url = $(e.relatedTarget).data('url');
                 $('#del-form').attr('action', url);
+            });
+            $('#modal-lg').on('show.bs.modal', function(e) {
+                var value = $(e.relatedTarget).data('value');
+                $('#avatar').attr('src', '/assets/images/avatars/' + value.avatar);
+                $('#name').text(value.name);
+                $('#email').text(value.email);
+                $('#phone').text(value.phone);
+                $('#birthday').text(value.birth_day);
+                $('#salaryday').text(value.salary_day);
+                $('#dayin').text(value.day_in);
+                $('#sex').text(value.sex);
+                $('#address').text(value.address);
+                $('#role').text(value.role);
+                $('#part').text(value.part);
             });
         });
     </script>
