@@ -16,7 +16,7 @@ Auth::routes();
 Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => 'manager']
 , function () {
     Route::get('/', 'PagesController@index')->name('manager.home');
-    Route::resource('users', 'UsersController');
+    Route::resource('users', 'UsersController', ['except' => 'show']);
     Route::resource('vacations', 'ManagerVacationController', ['except' => ['destroy', 'edit', 'store']]);
     Route::resource('overtimes', 'OvertimeController', ['except' => 'destroy', 'edit', 'store']);
     Route::resource('salary', 'ManagerSalaryController', ['except' => 'create', 'destroy']);

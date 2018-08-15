@@ -124,6 +124,27 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade" id="modal-lg">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="p-15 m-v-40">
+                            <div class="row ">
+                                <div class="col-md-6">
+                                    <img class="img-fluid mrg-horizon-auto" src="assets/images/others/img-7.png" alt="">
+                                </div>
+                                <div class="col-md-6">
+                                    <h2 class="text-semibold m-t-25">Beats Solo2 Headphone</h2>
+                                    <p class="lead">$259.00</p>
+                                    <p class="m-b-25">Let us wax poetic about the beauty of the cheeseburger. The flavour gracefully dances across your palate like a majestic figure skater on ice.</p>
+                                    <button class="btn btn-gradient-success" data-dismiss="modal"><i class="mdi mdi-cart-outline m-r-5"></i>Add to Cart</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 @endsection

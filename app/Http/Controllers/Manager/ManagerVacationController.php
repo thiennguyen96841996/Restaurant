@@ -26,7 +26,7 @@ class ManagerVacationController extends Controller
 
         $statics = Working::where('status', 1)->whereMonth('date', Carbon::now()->format('m'))->whereYear('date', Carbon::now()->format('Y'))->get()->unique('user_id');
 
-        $vacations = Vacation::where('status', 1)->where('date_start', 'like', '%' . Carbon::now()->toDatestring('Y:m:d') . '%')->where('date_end', 'like', '%' . Carbon::now()->toDatestring('Y:m:d') . '%')->get()->unique('user_id');
+        $vacations = Vacation::where('status', 1)->where('date_start', 'like', '%' . Carbon::now()->format('Y-m-d') . '%')->where('date_end', 'like', '%' . Carbon::now()->format('Y-m-d') . '%')->get()->unique('user_id');
 
         return view('backend.users.vacations.index', compact('date', 'works', 'lates', 'statics', 'vacations'));
     }
