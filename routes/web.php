@@ -21,6 +21,8 @@ Route::group(['prefix' => 'manager', 'namespace' => 'Manager', 'middleware' => '
     Route::resource('overtimes', 'OvertimeController', ['except' => 'destroy', 'edit', 'store']);
     Route::resource('salary', 'ManagerSalaryController', ['except' => 'create', 'destroy']);
     Route::get('salary/create/{id}', 'ManagerSalaryController@create')->name('salary.create');
+    Route::resource('category', 'CategoryController', ['except' => ['edit', 'show', 'create']]);
+    Route::resource('product', 'ProductController', ['except' => 'show']);
 });
 
 Route::group(['prefix' => 'employee', 'namespace' => 'Employee', 'middleware' => 'employee']

@@ -58,6 +58,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+                                        </td>
                                         <td>{!! str_limit($value->email, 20) !!}</td>
                                         <td>{!! $value->salary_day !!} {{ __('$') }}</td>
                                         <td class="font-size-18">
